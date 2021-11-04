@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        if(n<1) return 1;
+    int ans=1,l=1;
+    while(l<=n){
+       int m=l+(n-l)/2;
+       if(isBadVersion(m)){
+         ans=m;
+         n=m-1;
+       }
+       else l=m+1;
+   }
+    return ans;
+    }
+};
