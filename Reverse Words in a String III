@@ -1,0 +1,29 @@
+#include<string>
+class Solution {
+public:
+    string reverseWords(string str) {
+        string space=" ";
+        size_t pos1 = 0;
+        size_t pos2 = 0;
+        while(pos2<str.size())
+        {
+            pos2 = str.find(space,pos1+1);
+            if(pos2!=string::npos)
+            {
+                reverse(str.begin()+pos1,str.begin()+pos2);
+                //cout<<pos1<<" "<<pos2<<endl;
+                pos1 = pos2+1;
+            }
+            if(pos2==string::npos&&pos1==0)
+            {
+                reverse(str.begin(),str.end());
+                return str;
+            }
+        }
+        pos1 = str.rfind(space);
+        reverse(str.begin()+pos1,str.end());
+        str.insert(pos1,space);
+        str.pop_back();
+        return str;
+    }
+};
